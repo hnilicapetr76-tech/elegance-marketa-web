@@ -11,7 +11,7 @@ Veřejný web salonu. Next.js (App Router), bez závislosti na UI knihovnách.
 
 ## Úprava obsahu
 
-Ceny, provozní dobu, telefon i texty služeb měňte v `lib/site.ts`. Nic jiného není potřeba.
+Ceny, provozní dobu, telefon i texty služeb měňte v `lib/site.ts`. Nic jiného není potřeba. 
 
 ## Poptávkový formulář
 
