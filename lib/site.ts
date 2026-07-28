@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Centrum estetické krásy, elegance Markéta",
   shortName: "Elegance Markéta",
-  tagline: "Salon estetické krásy",
+  tagline: "Centrum estetické krásy",
   url: "https://elegancemarketa.cz",
   street: "Sokolská 1031",
   city: "Šluknov",
@@ -11,7 +11,7 @@ export const SITE = {
   email: "info@elegancemarketa.cz",
   facebook: "https://facebook.com/elegancemarketa",
   ico: "01087509",
-  owner: "Markéta Šicová, DiS.",
+  owner: "Markéta Hnilica, DiS.",
 };
 
 export const BRANDS = [
