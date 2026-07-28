@@ -26,7 +26,15 @@ export const BRANDS = [
 
 // Provozní doba zatím není potvrzená. Až ji budete mít, vyplňte HOURS
 // a HOURS_NOTE se přestane zobrazovat automaticky.
-export const HOURS: { d: string; h: string }[] = [];
+export const HOURS = [
+  { d: "Pondělí", h: "11:00 – 19:00" },
+  { d: "Úterý", h: "7:00 – 15:00" },
+  { d: "Středa", h: "7:00 – 12:00" },
+  { d: "Čtvrtek", h: "7:00 – 15:00" },
+  { d: "Pátek", h: "7:00 – 12:00" },
+  { d: "Sobota", h: "zavřeno" },
+  { d: "Neděle", h: "zavřeno" },
+];
 
 export const HOURS_NOTE =
   "Termíny domlouváme individuálně. Zavolejte nám nebo napište a domluvíme čas, který vám vyhovuje.";
