@@ -32,7 +32,7 @@ export default function ONas() {
             <p>
               Zaměřujeme se na problematiky pleti, omlazení, relax a odpočinek. Pracujeme výhradně
               s ověřenými značkami kosmoceutik — René D&apos;essay, MEDIK8, La4imedical, Dermaheal
-              HSR, ReviTrane a Croma — a s prémiovým soláriem ERGOLINE.
+              HSR, ReviTrane a Croma Saypha — a s prémiovým soláriem ERGOLINE.
             </p>
             <p>
               Ke každé klientce přistupujeme individuálně. Konzultace je vždy prvním krokem: projdeme
