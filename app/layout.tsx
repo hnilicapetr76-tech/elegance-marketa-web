@@ -61,7 +61,7 @@ const jsonLd = {
   name: SITE.name,
   alternateName: SITE.shortName,
   description:
-    "Zdravotnické zařízení s lékařskými estetickými službami ve Šluknově. Kosmetická ošetření, estetická medicína, čínská medicína, solárium a péče o ruce a nohy.",
+  "Zdravotnické zařízení s lékařskými estetickými službami ve Šluknově. Kosmetická ošetření, mezoterapie, dermální výplně a botulotoxin, permanentní make-up, piercing, čínská medicína, solárium a nehtová modeláž.",
   url: SITE.url,
   telephone: SITE.phone,
   email: SITE.email,
@@ -72,6 +72,11 @@ const jsonLd = {
     postalCode: SITE.zip,
     addressCountry: "CZ",
   },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "11:00", closes: "19:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "07:00", closes: "15:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Wednesday", "Friday"], opens: "07:00", closes: "12:00" },
+  ],
   sameAs: [SITE.facebook],
   priceRange: "$$",
   areaServed: [
