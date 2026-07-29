@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import AskSection from "../../components/AskSection";
+import { MapFrame } from "../../components/Consent";
 import { HOURS, HOURS_NOTE, SITE } from "../../lib/site";
+
+const MAP_SRC = "https://www.google.com/maps?q=51.002016,14.4572001&z=17&hl=cs&output=embed";
+const MAP_LINK =
+  "https://www.google.com/maps/place/Centrum+esteticke+krasy,+elegance+Marketa/@51.002016,14.4572001,17z";
 
 export const metadata: Metadata = {
   title: "Kontakt a provozní doba",
@@ -65,6 +70,22 @@ export default function Kontakt() {
                 <p style={{ marginTop: 14 }}>{HOURS_NOTE}</p>
               )}
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="alt">
+        <div className="wrap">
+          <div className="sec-head">
+            <p className="eyebrow">Kde nás najdete</p>
+            <div className="gline c" />
+            <h2>Sokolská 1031, Šluknov</h2>
+          </div>
+          <MapFrame src={MAP_SRC} title="Mapa — Sokolská 1031, Šluknov" />
+          <div className="cta-row" style={{ justifyContent: "center", marginTop: 26 }}>
+            <a className="btn btn-out" href={MAP_LINK} target="_blank" rel="noopener noreferrer">
+              Navigovat
+            </a>
           </div>
         </div>
       </section>
