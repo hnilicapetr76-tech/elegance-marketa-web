@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AskSection from "../components/AskSection";
+import { FacebookFeed } from "../components/Consent";
 import { BRANDS, SERVICES, SITE } from "../lib/site";
 
 export default function Home() {
@@ -98,23 +99,26 @@ export default function Home() {
       <section>
         <div className="wrap">
           <div className="sec-head">
-            <p className="eyebrow">Reference</p>
+            <p className="eyebrow">Facebook</p>
             <div className="gline c" />
-            <h2>Co říkají klientky</h2>
+            <h2>Co je u nás nového</h2>
             <p>
-              Hodnocení našich klientek najdete na Facebooku — píší tam bez našeho zásahu, tak jak
-              to mají.
+              Novinky, akce a hodnocení klientek najdete na našem Facebooku — píší tam bez našeho
+              zásahu, tak jak to mají.
             </p>
-            <div className="cta-row" style={{ justifyContent: "center", marginTop: 30 }}>
-              <a
-                className="btn btn-out"
-                href={SITE.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Recenze na Facebooku
-              </a>
-            </div>
+          </div>
+          <div className="fb-wrap">
+            <FacebookFeed pageUrl={SITE.facebook} />
+          </div>
+          <div className="cta-row" style={{ justifyContent: "center", marginTop: 30 }}>
+            <a
+              className="btn btn-out"
+              href={SITE.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Otevřít Facebook
+            </a>
           </div>
         </div>
       </section>
