@@ -164,8 +164,26 @@ form .btn-gold{width:100%;font-family:inherit}
 .prose p,.prose li{color:var(--ink-2);font-size:15.5px;margin-bottom:12px}
 .prose ul{padding-left:22px;margin-bottom:16px}
 
+.cbar{position:fixed;left:0;right:0;bottom:0;z-index:120;background:rgba(250,245,238,.97);backdrop-filter:blur(14px);border-top:1px solid var(--gold-soft);box-shadow:0 -14px 40px -30px rgba(111,91,69,.8)}
+.cbar-in{max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.cbar p{font-size:13.5px;color:var(--ink-2);flex:1;min-width:260px;line-height:1.6}
+.cbar a{color:var(--gold);text-decoration:underline}
+.cbar-btns{display:flex;gap:10px;flex-shrink:0}
+.cbar-btns .btn{padding:11px 24px;font-size:11px}
+
+.embed-blocked{background:linear-gradient(155deg,var(--cream-3),#fdf9f3);border:1px solid var(--gold-soft);border-radius:4px;padding:44px 32px;text-align:center;max-width:560px;margin:0 auto;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.embed-blocked p{color:var(--ink-2);font-size:14.5px;max-width:420px}
+
+.fb-wrap{display:flex;justify-content:center}
+.fb-frame{border:1px solid var(--line);border-radius:4px;background:#fff;max-width:100%}
+.map-frame{width:100%;height:420px;border:1px solid var(--line);border-radius:4px;display:block}
+
 @media(max-width:900px){
   .links{display:none}
+  .cbar-in{padding:16px 20px;gap:14px}
+  .cbar-btns{width:100%}
+  .cbar-btns .btn{flex:1}
+  .map-frame{height:320px}
   .navtoggle{display:block}
   .hero-in,.split-in,.ask-in{grid-template-columns:1fr;gap:44px}
   .frow{grid-template-columns:1fr}
