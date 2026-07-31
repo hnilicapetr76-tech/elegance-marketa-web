@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: "Kosmetika a estetická medicína Šluknov | Elegance Markéta",
     description:
-      "Nově zrekonstruované estetické centrum ve Šluknově. Péče o pleť, omlazení, relax a odpočinek.",
+      "Estetické centrum ve Šluknově. Péče o pleť, omlazení, relax a odpočinek.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: SITE.url },
