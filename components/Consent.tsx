@@ -35,6 +35,15 @@ function write(value: string) {
   window.dispatchEvent(new CustomEvent(EVENT, { detail: value }));
 }
 
+function clear() {
+  try {
+    window.localStorage.removeItem(KEY);
+  } catch {
+    /* nic k odstranění */
+  }
+  window.dispatchEvent(new CustomEvent(EVENT, { detail: null }));
+}
+
 /** Sleduje aktuální stav souhlasu. */
 function useConsent() {
   const [value, setValue] = useState<string | null>(null);
@@ -49,7 +58,42 @@ function useConsent() {
     return () => window.removeEventListener(EVENT, onChange);
   }, []);
 
-  return { value, ready, accept: () => write("all"), decline: () => write("necessary") };
+  return {
+    value,
+    ready,
+    accept: () => write("all"),
+    decline: () => write("necessary"),
+    reset: clear,
+  };
+}
+
+/* ---------------------------------------------------------------- */
+
+/** Tlačítko na stránce o ochraně údajů — vrátí volbu do výchozího stavu. */
+export function ConsentReset() {
+  const { value, ready, reset } = useConsent();
+
+  if (!ready) return null;
+
+  const popis =
+    value === "all"
+      ? "Máte povolený vložený obsah z Facebooku a Map Google."
+      : value === "necessary"
+        ? "Vložený obsah z Facebooku a Map Google je zablokovaný."
+        : "Zatím jste se nerozhodl(a) — při procházení webu se vám zobrazí lišta.";
+
+  return (
+    <div className="warn">
+      <p style={{ marginBottom: value === null ? 0 : 14 }}>
+        <b>Vaše aktuální volba:</b> {popis}
+      </p>
+      {value !== null && (
+        <button className="btn btn-out" onClick={reset}>
+          Změnit volbu
+        </button>
+      )}
+    </div>
+  );
 }
 
 /* ---------------------------------------------------------------- */
