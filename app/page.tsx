@@ -81,7 +81,15 @@ export default function Home() {
 
       <section className="alt split">
         <div className="wrap split-in">
-          <div className="ph split-img">Fotografie interiéru</div>
+          <div className="split-img">
+            <img
+              src="/foto/interier-recepce.jpg"
+              alt="Recepce a čekací kout estetického centra Elegance Markéta"
+              width={1100}
+              height={1375}
+              loading="lazy"
+            />
+          </div>
           <div>
             <p className="eyebrow">O nás</p>
             <div className="gline" />

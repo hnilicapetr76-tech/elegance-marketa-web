@@ -22,7 +22,15 @@ export default function ONas() {
 
       <section className="split">
         <div className="wrap split-in">
-          <div className="ph split-img">Fotografie interiéru</div>
+          <div className="split-img">
+            <img
+              src="/foto/interier-osetrovna.jpg"
+              alt="Kosmetická ošetřovna v centru Elegance Markéta ve Šluknově"
+              width={1100}
+              height={1375}
+              loading="lazy"
+            />
+          </div>
           <div>
             <p>
               Elegance Markéta je nově zrekonstruované estetické centrum ve Šluknově. Fungujeme jako
