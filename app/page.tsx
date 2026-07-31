@@ -40,7 +40,14 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="ph hero-img">Hlavní fotografie salonu</div>
+          <div className="hero-img">
+            <img
+              src="/uvod.jpg"
+              alt="Recepce Centra estetické krásy elegance Markéta ve Šluknově"
+              width={1228}
+              height={1536}
+            />
+          </div>
         </div>
       </section>
 
