@@ -120,19 +120,19 @@ export default function Gdpr() {
             nefungovaly:
           </p>
           <ul>
-            <li>
-              <b>Vercel</b> — provoz tohoto webu
-            </li>
-            <li>
-              <b>Resend</b> — odeslání zprávy z formuláře do naší schránky
-            </li>
-            <li>
-              <b>Zoho</b> — naše e-mailová schránka (data v Evropské unii)
-            </li>
+            <li>poskytovatele provozu tohoto webu,</li>
+            <li>službu, která doručí zprávu z formuláře do naší schránky,</li>
+            <li>poskytovatele naší e-mailové schránky.</li>
           </ul>
           <p>
             Všichni vystupují jako zpracovatelé, mají to smluvně ošetřené a údaje smějí použít
-            výhradně k tomu, k čemu je od nás dostali.
+            výhradně k tomu, k čemu je od nás dostali. Naše schránka i zprávy z formuláře jsou
+            uloženy na serverech v Evropské unii; u dodavatelů se sídlem mimo EU je předání
+            zajištěno standardními smluvními doložkami schválenými Evropskou komisí.
+          </p>
+          <p>
+            Chcete-li vědět, o které konkrétní společnosti jde, napište nám na{" "}
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a> — rády vám je jmenovitě sdělíme.
           </p>
 
           <h2>Cookies a obsah z Facebooku a Map</h2>
