@@ -100,11 +100,13 @@ export default function Home() {
             </p>
             <p>
               Pracujeme výhradně s ověřenými značkami kosmoceutik a přístrojů. Ke každé klientce
-              přistupujeme individuálně — konzultace je vždy prvním krokem.
+              přistupujeme individuálně — konzultace je vždy prvním krokem. A na recepci na vás
+              čeká káva, ať se u nás cítíte dobře od první minuty.
             </p>
             <ul className="pros">
-              <li>Zdravotnické zařízení s lékařskými estetickými službami</li>
-              <li>Nově zrekonstruované prostory</li>
+              <li>Injekční zákroky provádí lékařka</li>
+              <li>Nástroje sterilizujeme v medicínském autoklávu</li>
+              <li>Samostatná ošetřovna pro každou službu</li>
               <li>Ověřené značky kosmoceutik</li>
             </ul>
           </div>

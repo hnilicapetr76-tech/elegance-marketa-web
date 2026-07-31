@@ -5,7 +5,7 @@ import { SITE } from "../../lib/site";
 export const metadata: Metadata = {
   title: "O nás — estetické centrum ve Šluknově",
   description:
-    "Elegance Markéta je zdravotnické zařízení s lékařskými estetickými službami ve Šluknově. Nově zrekonstruované prostory, ověřené značky, individuální přístup.",
+    "Elegance Markéta je zdravotnické zařízení s lékařskými estetickými službami ve Šluknově. Samostatná ošetřovna pro každou službu, ověřené značky, individuální přístup.",
   alternates: { canonical: "/o-nas" },
 };
 
@@ -33,7 +33,7 @@ export default function ONas() {
           </div>
           <div>
             <p>
-              Elegance Markéta je nově zrekonstruované estetické centrum ve Šluknově. Fungujeme jako
+              Elegance Markéta je estetické centrum ve Šluknově. Fungujeme jako
               zdravotnické zařízení s lékařskými estetickými službami, což znamená, že u zákroků,
               které to vyžadují, máme odpovídající zázemí i odbornost.
             </p>
@@ -47,9 +47,19 @@ export default function ONas() {
               spolu, co vaše pleť potřebuje, co je reálné očekávat a co dává smysl. Nikdy vám
               nedoporučíme ošetření, které nepotřebujete.
             </p>
+            <p>
+              Na bezpečí si dáváme záležet. Nástroje sterilizujeme v medicínském autoklávu Enbio —
+              u piercingu, permanentního make-upu i pedikúry je to to první, na co se ptáme sami
+              sebe. Injekční zákroky, tedy dermální výplně a botulotoxin, provádí lékařka.
+            </p>
+            <p>
+              A protože k péči patří i to, jak se u nás cítíte: na recepci je vždy připravená káva
+              nebo něco malého k zakousnutí. Nikam vás nikdo nežene.
+            </p>
             <ul className="pros">
-              <li>Zdravotnické zařízení s lékařskými estetickými službami</li>
-              <li>Nově zrekonstruované prostory</li>
+              <li>Injekční zákroky provádí lékařka</li>
+              <li>Nástroje sterilizujeme v medicínském autoklávu Enbio</li>
+              <li>Samostatná ošetřovna pro každou službu</li>
               <li>Ověřené značky kosmoceutik</li>
             </ul>
           </div>

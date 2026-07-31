@@ -33,7 +33,7 @@ export default function Galerie() {
           <div className="gline c" />
           <h1>Nahlédněte k nám</h1>
           <p>
-            Nově zrekonstruované prostory ve Šluknově — recepce, ošetřovny, nehtové studio, solárium
+            Naše prostory ve Šluknově — recepce, ošetřovny, nehtové studio, solárium
             i zázemí, kde sterilizujeme nástroje.
           </p>
         </div>
