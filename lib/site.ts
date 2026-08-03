@@ -17,7 +17,7 @@ export const SITE = {
 export const BRANDS = [
   "René D'essay",
   "MEDIK8",
-  "La4imedical",
+  "Larimedical",
   "Dermaheal HSR",
   "ReviTrane",
   "Croma Saypha",
