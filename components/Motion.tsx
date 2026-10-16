@@ -52,6 +52,13 @@ export default function Motion() {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
+    // Otevřená adresa s kotvou (např. /kontakt#zeptejte-se) – dojet na ni,
+    // protože spuštění plynulého scrollu zastaví skok prohlížeče.
+    if (window.location.hash) {
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) requestAnimationFrame(() => lenis.scrollTo(target));
+    }
+
     return () => {
       gsap.ticker.remove(tick);
       lenis.destroy();
