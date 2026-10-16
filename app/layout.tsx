@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import { CookieBar } from "../components/Consent";
+import Motion from "../components/Motion";
 import { HOURS, SITE } from "../lib/site";
 import "./globals.css";
 
@@ -89,7 +90,15 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="cs" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="cs" className={`${cormorant.variable} ${jost.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.classList.add('mo');setTimeout(function(){d.classList.remove('mo')},2500)}}catch(e){}",
+          }}
+        />
+      </head>
       <body>
         <a className="skip" href="#obsah">
           Přeskočit na obsah
@@ -98,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="obsah">{children}</main>
         <SiteFooter />
         <CookieBar />
+        <Motion />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -18,11 +18,16 @@ export default function Home() {
             />
             <p className="eyebrow">Šluknov &middot; zdravotnické zařízení</p>
             <h1>
-              Elegance <em>Markéta</em>
+              <span className="hw">
+                <span>Elegance</span>
+              </span>{" "}
+              <span className="hw">
+                <em>Markéta</em>
+              </span>
             </h1>
             <p className="lead-sub">Centrum estetické krásy</p>
             <p className="claim">Krása není luxus, ale péče, kterou si zasloužíte.</p>
-            <p>
+            <p className="hero-text">
               Nadstandardní kosmetické a estetické služby se špičkovými produkty, díky kterým si
               nejen odpočinete, ale zároveň podtrhnete svou přirozenou krásu.
             </p>
@@ -34,10 +39,17 @@ export default function Home() {
                 Naše služby
               </Link>
             </div>
-            <div className="badges">
-              {BRANDS.map((b) => (
-                <span key={b}>{b}</span>
-              ))}
+            <div className="badges" aria-label="Značky, se kterými pracujeme">
+              <div className="badges-track">
+                {BRANDS.map((b) => (
+                  <span key={b}>{b}</span>
+                ))}
+                {BRANDS.map((b) => (
+                  <span key={`${b}-2`} className="dup" aria-hidden="true">
+                    {b}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
           <div className="hero-img">
