@@ -62,6 +62,8 @@ img{max-width:100%;display:block}
 
 /* ---- Pohyb (components/Motion.tsx) ---- */
 .hero-in>*{min-width:0}
+/* karty na mobilu najíždějí ze stran – nesmí rozšířit stránku */
+main{overflow-x:clip}
 .hero h1 .hw{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .04em .12em;margin:0 -.04em -.12em}
 .hero h1 .hw>span,.hero h1 .hw>em{display:inline-block}
 /* než se načte skript, úvod schovat, ať neproblikne (třída "mo" se přidává jen bez „omezit pohyb“) */
