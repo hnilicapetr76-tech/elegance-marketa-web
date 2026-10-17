@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Souhlas s cookies třetích stran (Facebook, Mapy.cz).
@@ -154,24 +154,71 @@ export function FacebookFeed({ pageUrl }: { pageUrl: string }) {
     );
   }
 
+  return <FacebookFrame pageUrl={pageUrl} />;
+}
+
+/**
+ * Facebook vykreslí náhled jen v šířce, o kterou si řekneme (180–500 px).
+ * Pevných 500 px se na telefon nevejde a okno pak zůstane prázdné,
+ * proto změříme skutečné místo a teprve s ním okno načteme.
+ */
+function FacebookFrame({ pageUrl }: { pageUrl: string }) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const box = boxRef.current;
+    if (!box) return;
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const measure = () => {
+      const w = Math.max(180, Math.min(500, Math.floor(box.clientWidth)));
+      // jen při znatelné změně (otočení telefonu), ať se okno zbytečně nenačítá znovu
+      setWidth((prev) => (Math.abs(prev - w) > 20 ? w : prev));
+    };
+    measure();
+    const ro = new ResizeObserver(() => {
+      clearTimeout(t);
+      t = setTimeout(measure, 150);
+    });
+    ro.observe(box);
+    return () => {
+      ro.disconnect();
+      clearTimeout(t);
+    };
+  }, []);
+
+  const narrow = width < 400;
+  const height = narrow ? 560 : 640;
   const src =
     "https://www.facebook.com/plugins/page.php?href=" +
     encodeURIComponent(pageUrl) +
-    "&tabs=timeline&width=500&height=640&small_header=false" +
+    `&tabs=timeline&width=${width}&height=${height}&small_header=${narrow}` +
     "&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=cs_CZ";
 
   return (
-    <iframe
-      className="fb-frame"
-      src={src}
-      width={500}
-      height={640}
-      title="Příspěvky z našeho Facebooku"
-      loading="lazy"
-      scrolling="no"
-      frameBorder={0}
-      allow="encrypted-media"
-    />
+    <div className="fb-box" ref={boxRef}>
+      {width > 0 && (
+        <iframe
+          key={width}
+          className="fb-frame"
+          src={src}
+          width={width}
+          height={height}
+          title="Příspěvky z našeho Facebooku"
+          scrolling="no"
+          frameBorder={0}
+          allow="encrypted-media; clipboard-write; web-share"
+        />
+      )}
+      <p className="fb-note">
+        Nezobrazují se vám příspěvky? Některé prohlížeče (hlavně Safari na iPhonu) okno
+        Facebooku blokují –{" "}
+        <a href={pageUrl} target="_blank" rel="noopener noreferrer">
+          otevřete si nás přímo na Facebooku
+        </a>
+        .
+      </p>
+    </div>
   );
 }
 

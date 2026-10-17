@@ -200,7 +200,10 @@ form .btn-gold{width:100%;font-family:inherit}
 .embed-blocked p{color:var(--ink-2);font-size:14.5px;max-width:420px}
 
 .fb-wrap{display:flex;justify-content:center}
-.fb-frame{border:1px solid var(--line);border-radius:4px;background:#fff;max-width:100%}
+.fb-box{width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center}
+.fb-frame{display:block;border:1px solid var(--line);border-radius:4px;background:#fff;max-width:100%}
+.fb-note{margin-top:14px;font-size:12.5px;color:var(--muted);text-align:center;line-height:1.6;max-width:420px}
+.fb-note a{color:var(--gold);text-decoration:underline}
 .map-frame{width:100%;height:420px;border:1px solid var(--line);border-radius:4px;display:block}
 
 @media(max-width:900px){
