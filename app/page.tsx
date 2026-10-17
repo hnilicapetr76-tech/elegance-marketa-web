@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AskSection from "../components/AskSection";
-import { FacebookFeed } from "../components/Consent";
+import FacebookNews from "../components/FacebookNews";
 import { BRANDS, SERVICES, SITE } from "../lib/site";
 
 export default function Home() {
@@ -136,9 +136,7 @@ export default function Home() {
               zásahu, tak jak to mají.
             </p>
           </div>
-          <div className="fb-wrap">
-            <FacebookFeed pageUrl={SITE.facebook} />
-          </div>
+          <FacebookNews pageUrl={SITE.facebook} />
           <div className="cta-row" style={{ justifyContent: "center", marginTop: 30 }}>
             <a
               className="btn btn-out"
@@ -146,7 +144,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Otevřít Facebook
+              Všechny novinky na Facebooku
             </a>
           </div>
         </div>

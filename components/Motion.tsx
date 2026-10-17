@@ -35,7 +35,14 @@ const REVEAL = [
 ].join(",");
 
 // Skupiny, kde se položky objevují postupně jedna po druhé.
-const BATCH = [".grid > .card", ".rev-grid > .rev-card", ".gal > *", ".pros li"].join(",");
+const BATCH = [
+  ".grid > .card",
+  ".rev-grid > .rev-card",
+  ".gal > *",
+  ".pros li",
+  ".fb-posts > .fb-post",
+  ".fb-tile",
+].join(",");
 
 export default function Motion() {
   const pathname = usePathname();
@@ -137,8 +144,8 @@ export default function Motion() {
             autoAlpha: 0,
             y: M.cardRise,
             x: (i, el: HTMLElement) =>
-              M.cardX && el.matches(".card, .rev-card") ? (i % 2 ? M.cardX : -M.cardX) : 0,
-            scale: (_i, el: HTMLElement) => (el.matches(".card, .rev-card, .gal > *") ? M.cardScale : 1),
+              M.cardX && el.matches(".card, .rev-card, .fb-post") ? (i % 2 ? M.cardX : -M.cardX) : 0,
+            scale: (_i, el: HTMLElement) => (el.matches(".card, .rev-card, .fb-post, .gal > *") ? M.cardScale : 1),
           });
           ScrollTrigger.batch(items, {
             start: M.start,

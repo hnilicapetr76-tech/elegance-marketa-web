@@ -247,3 +247,28 @@ form .btn-gold{width:100%;font-family:inherit}
 @media(max-width:360px){
   .brand-txt{display:none}
 }
+
+/* ---- Novinky z Facebooku (components/FacebookNews.tsx) ---- */
+.fb-posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fb-post{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.32s}
+.fb-post:hover{box-shadow:0 24px 54px -34px rgba(111,91,69,.55);transform:translateY(-3px)}
+.fb-post-img{position:relative;display:block;aspect-ratio:1;background:var(--cream-2);overflow:hidden}
+.fb-post-img img{object-fit:cover;transition:transform .6s ease}
+.fb-post:hover .fb-post-img img{transform:scale(1.04)}
+.fb-post-body{display:flex;flex-direction:column;gap:10px;padding:24px 26px 26px;flex:1}
+.fb-post time{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.fb-post-text{color:var(--ink-2);font-size:14.5px;line-height:1.7;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.fb-post-more{margin-top:auto;padding-top:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.fb-tile{display:flex;align-items:center;gap:24px;max-width:620px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px 32px;transition:.32s}
+.fb-tile:hover{box-shadow:0 24px 54px -34px rgba(111,91,69,.55);transform:translateY(-3px);border-color:var(--gold-soft)}
+.fb-tile img{width:84px;height:84px;flex-shrink:0}
+.fb-tile-txt{flex:1;display:flex;flex-direction:column;gap:4px}
+.fb-tile-txt b{font-family:var(--font-cormorant),serif;font-size:26px;font-weight:400;line-height:1.2}
+.fb-tile-txt span{color:var(--ink-2);font-size:14.5px}
+.fb-tile-go{font-size:26px;color:var(--gold)}
+@media(max-width:900px){
+  .fb-posts{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+  .fb-tile{padding:22px 20px;gap:16px}
+  .fb-tile img{width:60px;height:60px}
+  .fb-tile-txt b{font-size:22px}
+}

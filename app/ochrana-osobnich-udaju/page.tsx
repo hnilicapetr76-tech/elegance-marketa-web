@@ -135,17 +135,21 @@ export default function Gdpr() {
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a> — rády vám je jmenovitě sdělíme.
           </p>
 
-          <h2>Cookies a obsah z Facebooku a Map</h2>
+          <h2>Cookies, mapa a příspěvky z Facebooku</h2>
           <p>
-            Web sám o sobě žádné sledovací ani reklamní cookies nepoužívá. Zobrazujeme ale{" "}
-            <b>příspěvky z našeho Facebooku</b> a <b>mapu s adresou od Googlu</b> — a tyto dvě
-            služby si do vašeho prohlížeče ukládají vlastní cookies a vidí, že jste náš web
-            navštívila.
+            Web sám o sobě žádné sledovací ani reklamní cookies nepoužívá. Na stránce Kontakt
+            zobrazujeme <b>mapu s adresou od Googlu</b> — ta si do vašeho prohlížeče ukládá
+            vlastní cookies a vidí, že jste náš web navštívila.
           </p>
           <p>
-            Proto se vám při první návštěvě zobrazí lišta se souhlasem. Dokud nerozhodnete, obsah
-            se nenačte. Zvolíte-li „Jen nezbytné", zůstane zablokovaný a web funguje dál — jen
-            místo okénka uvidíte vysvětlení s tlačítkem, kterým jej můžete zobrazit jednorázově.
+            Proto se vám při první návštěvě zobrazí lišta se souhlasem. Dokud nerozhodnete, mapa
+            se nenačte. Zvolíte-li „Jen nezbytné", zůstane zablokovaná a web funguje dál — jen
+            místo mapy uvidíte vysvětlení s tlačítkem, kterým ji můžete zobrazit jednorázově.
+          </p>
+          <p>
+            <b>Novinky z našeho Facebooku</b> na úvodní stránce stahuje náš server a zobrazuje je
+            jako součást webu. Váš prohlížeč se přitom s Facebookem nespojuje a Facebook o vaší
+            návštěvě neví. Teprve když kliknete na příspěvek, otevře se vám Facebook.
           </p>
 
           <ConsentReset />
