@@ -64,6 +64,8 @@ img{max-width:100%;display:block}
 .hero-in>*{min-width:0}
 /* karty na mobilu najíždějí ze stran – nesmí rozšířit stránku */
 main{overflow-x:clip}
+/* Lenis ve výchozím stavu vypíná myš ve všech vložených oknech – Facebook a mapa ji potřebují */
+.lenis.lenis-smooth iframe{pointer-events:auto}
 .hero h1 .hw{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .04em .12em;margin:0 -.04em -.12em}
 .hero h1 .hw>span,.hero h1 .hw>em{display:inline-block}
 /* než se načte skript, úvod schovat, ať neproblikne (třída "mo" se přidává jen bez „omezit pohyb“) */
@@ -223,4 +225,25 @@ form .btn-gold{width:100%;font-family:inherit}
   .hero{padding:70px 0 60px}
   .price-block{padding:14px 24px 20px}
   form{padding:28px 22px}
+}
+
+/* ---- Hlavička na telefonu: logo, „Zeptejte se Markétky“ a Menu se vejdou vedle sebe ---- */
+@media(max-width:900px){
+  .nav-in{padding:10px 20px;gap:12px}
+  .brand{gap:10px;min-width:0;flex:1 1 auto}
+  .brand-txt{min-width:0}
+  .mono{width:46px;height:46px}
+  .nav-in>.btn-gold{flex-shrink:0;padding:10px 14px;font-size:10.5px;letter-spacing:.1em;line-height:1.35}
+  .navtoggle{flex-shrink:0;padding:9px 12px}
+}
+@media(max-width:560px){
+  .nav-in{padding:10px 14px;gap:8px}
+  .mono{width:40px;height:40px}
+  .brand-txt b{font-size:18px}
+  .brand-txt span{display:none}
+  .nav-in>.btn-gold{max-width:118px;white-space:normal;padding:8px 10px;font-size:10px;letter-spacing:.08em}
+  .navtoggle{padding:8px 10px;font-size:11px;letter-spacing:.1em}
+}
+@media(max-width:360px){
+  .brand-txt{display:none}
 }

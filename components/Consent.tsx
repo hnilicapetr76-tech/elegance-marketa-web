@@ -196,7 +196,7 @@ function FacebookFrame({ pageUrl }: { pageUrl: string }) {
     "&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=cs_CZ";
 
   return (
-    <div className="fb-box" ref={boxRef}>
+    <div className="fb-box" ref={boxRef} data-lenis-prevent>
       {width > 0 && (
         <iframe
           key={width}
@@ -237,6 +237,8 @@ export function MapFrame({ src, title }: { src: string; title: string }) {
   }
 
   return (
-    <iframe className="map-frame" src={src} title={title} loading="lazy" frameBorder={0} />
+    <div data-lenis-prevent>
+      <iframe className="map-frame" src={src} title={title} loading="lazy" frameBorder={0} />
+    </div>
   );
 }

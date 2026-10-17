@@ -30,7 +30,8 @@ const REVEAL = [
   ".price-block",
   ".warn",
   ".faq",
-  ".fb-wrap",
+  // .fb-wrap záměrně NE: okno Facebooku se nesmí hýbat ani být průhledné,
+  // jinak se jeho obsah nevykreslí.
 ].join(",");
 
 // Skupiny, kde se položky objevují postupně jedna po druhé.
