@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getFacebookPosts } from "../lib/facebook";
+import { FacebookFeed } from "./Consent";
 
 const fmt = new Intl.DateTimeFormat("cs-CZ", {
   day: "numeric",
@@ -9,25 +10,19 @@ const fmt = new Intl.DateTimeFormat("cs-CZ", {
 });
 
 /**
- * Novinky z Facebooku vykreslené v designu webu.
+ * Novinky z Facebooku vykreslené v designu webu (zapnou se, jakmile je ve Vercelu FB_PAGE_TOKEN).
  * Obrázky jdou přes náš server (next/image), takže prohlížeč návštěvnice
  * se s Facebookem vůbec nespojí a nepotřebuje souhlas s cookies.
  */
 export default async function FacebookNews({ pageUrl }: { pageUrl: string }) {
   const posts = await getFacebookPosts(pageUrl);
 
+  // Bez tokenu (FB_PAGE_TOKEN) nebo když Facebook neodpoví: původní okno Facebooku.
   if (posts.length === 0) {
     return (
-      <a className="fb-tile" href={pageUrl} target="_blank" rel="noopener noreferrer">
-        <img src="/logo.png" alt="" width={84} height={84} />
-        <span className="fb-tile-txt">
-          <b>Sledujte nás na Facebooku</b>
-          <span>Novinky, akce, fotky z ošetření a hodnocení klientek.</span>
-        </span>
-        <span className="fb-tile-go" aria-hidden="true">
-          →
-        </span>
-      </a>
+      <div className="fb-wrap">
+        <FacebookFeed pageUrl={pageUrl} />
+      </div>
     );
   }
 

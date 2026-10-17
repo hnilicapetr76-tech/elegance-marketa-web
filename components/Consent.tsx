@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Souhlas s cookies třetích stran (mapa Google na stránce Kontakt).
- * Příspěvky z Facebooku stahuje náš server, prohlížeč se s Facebookem nespojuje.
+ * Souhlas s cookies třetích stran (Facebook, Mapy.cz).
  *
  * Ukládá se do localStorage pod klíčem "em-consent":
  *   "all"       – návštěvník souhlasil s vloženým obsahem
@@ -78,9 +77,9 @@ export function ConsentReset() {
 
   const popis =
     value === "all"
-      ? "Máte povolenou vloženou mapu Google."
+      ? "Máte povolený vložený obsah z Facebooku a Map Google."
       : value === "necessary"
-        ? "Vložená mapa Google je zablokovaná."
+        ? "Vložený obsah z Facebooku a Map Google je zablokovaný."
         : "Zatím jste se nerozhodl(a) — při procházení webu se vám zobrazí lišta.";
 
   return (
@@ -110,8 +109,9 @@ export function CookieBar() {
     <div className="cbar" role="dialog" aria-label="Souhlas s cookies">
       <div className="cbar-in">
         <p>
-          Na stránce Kontakt zobrazujeme mapu od Googlu, která si do vašeho prohlížeče ukládá
-          vlastní cookies. Bez souhlasu ji nenačteme a zbytek webu funguje normálně.{" "}
+          Na webu zobrazujeme příspěvky z Facebooku a mapu z Mapy.cz. Tyto služby si do vašeho
+          prohlížeče ukládají vlastní cookies. Bez souhlasu je nenačteme a zbytek webu funguje
+          normálně.{" "}
           <Link href="/ochrana-osobnich-udaju">Více o zpracování údajů</Link>
         </p>
         <div className="cbar-btns">
@@ -140,6 +140,87 @@ function Blocked({ text, onAllow }: { text: string; onAllow: () => void }) {
   );
 }
 
+export function FacebookFeed({ pageUrl }: { pageUrl: string }) {
+  const { value, ready, accept } = useConsent();
+
+  if (!ready) return <div className="embed-blocked" aria-hidden />;
+
+  if (value !== "all") {
+    return (
+      <Blocked
+        text="Zde se zobrazují naše příspěvky z Facebooku. Načtou se až po vašem souhlasu, protože Facebook si ukládá vlastní cookies."
+        onAllow={accept}
+      />
+    );
+  }
+
+  return <FacebookFrame pageUrl={pageUrl} />;
+}
+
+/**
+ * Facebook vykreslí náhled jen v šířce, o kterou si řekneme (180–500 px).
+ * Pevných 500 px se na telefon nevejde a okno pak zůstane prázdné,
+ * proto změříme skutečné místo a teprve s ním okno načteme.
+ */
+function FacebookFrame({ pageUrl }: { pageUrl: string }) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const box = boxRef.current;
+    if (!box) return;
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const measure = () => {
+      const w = Math.max(180, Math.min(500, Math.floor(box.clientWidth)));
+      // jen při znatelné změně (otočení telefonu), ať se okno zbytečně nenačítá znovu
+      setWidth((prev) => (Math.abs(prev - w) > 20 ? w : prev));
+    };
+    measure();
+    const ro = new ResizeObserver(() => {
+      clearTimeout(t);
+      t = setTimeout(measure, 150);
+    });
+    ro.observe(box);
+    return () => {
+      ro.disconnect();
+      clearTimeout(t);
+    };
+  }, []);
+
+  const narrow = width < 400;
+  const height = narrow ? 560 : 640;
+  const src =
+    "https://www.facebook.com/plugins/page.php?href=" +
+    encodeURIComponent(pageUrl) +
+    `&tabs=timeline&width=${width}&height=${height}&small_header=${narrow}` +
+    "&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=cs_CZ";
+
+  return (
+    <div className="fb-box" ref={boxRef} data-lenis-prevent>
+      {width > 0 && (
+        <iframe
+          key={width}
+          className="fb-frame"
+          src={src}
+          width={width}
+          height={height}
+          title="Příspěvky z našeho Facebooku"
+          scrolling="no"
+          frameBorder={0}
+          allow="encrypted-media; clipboard-write; web-share"
+        />
+      )}
+      <p className="fb-note">
+        Nezobrazují se vám příspěvky? Facebook je v tomto okně ukazuje jen přihlášeným –{" "}
+        <a href={pageUrl} target="_blank" rel="noopener noreferrer">
+          otevřete si nás přímo na Facebooku
+        </a>
+        .
+      </p>
+    </div>
+  );
+}
+
 export function MapFrame({ src, title }: { src: string; title: string }) {
   const { value, ready, accept } = useConsent();
 
@@ -148,7 +229,7 @@ export function MapFrame({ src, title }: { src: string; title: string }) {
   if (value !== "all") {
     return (
       <Blocked
-        text="Zde se zobrazuje mapa s naší adresou. Načte se až po vašem souhlasu, protože Google si ukládá vlastní cookies."
+        text="Zde se zobrazuje mapa s naší adresou. Načte se až po vašem souhlasu, protože Mapy.cz si ukládají vlastní cookies."
         onAllow={accept}
       />
     );

@@ -144,7 +144,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Všechny novinky na Facebooku
+              Otevřít Facebook
             </a>
           </div>
         </div>
