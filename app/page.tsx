@@ -16,7 +16,7 @@ export default function Home() {
               width={160}
               height={160}
             />
-            <p className="eyebrow">Šluknov &middot; zdravotnické zařízení</p>
+            <p className="eyebrow">Šluknov&nbsp;&middot; zdravotnické zařízení</p>
             <h1>
               <span className="hw">
                 <span>Elegance</span>
