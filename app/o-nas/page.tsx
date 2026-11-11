@@ -79,6 +79,8 @@ export default function ONas() {
             <br />
             IČ: {SITE.ico}
             <br />
+            Sídlo: {SITE.seat}, {SITE.register}
+            <br />
             Zdravotnické zařízení s lékařskými estetickými službami
           </p>
         </div>

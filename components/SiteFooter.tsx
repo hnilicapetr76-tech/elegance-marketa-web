@@ -20,6 +20,8 @@ export default function SiteFooter() {
               Zdravotnické zařízení s lékařskými estetickými službami.
               <br />
               {SITE.owner} &middot; IČ: {SITE.ico}
+              <br />
+              Sídlo: {SITE.seat}, {SITE.register}
             </p>
           </div>
 
@@ -62,9 +64,10 @@ export default function SiteFooter() {
 
         <div className="f-bot">
           <span>© {new Date().getFullYear()} {SITE.name}</span>
-          <span>
+          <nav className="f-legal" aria-label="Právní informace">
             <Link href="/ochrana-osobnich-udaju">Ochrana osobních údajů</Link>
-          </span>
+            <Link href="/pravidla-webu">Pravidla používání webu</Link>
+          </nav>
         </div>
       </div>
     </footer>

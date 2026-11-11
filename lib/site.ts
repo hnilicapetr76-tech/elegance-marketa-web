@@ -12,7 +12,14 @@ export const SITE = {
   facebook: "https://facebook.com/elegancemarketa",
   ico: "01087509",
   owner: "Markéta Hnilica, DiS.",
+  /** Sídlo podle ARES (ověřeno 11. 11. 2026) – liší se od provozovny salonu. */
+  seat: "T. G. Masaryka 290, 407 77 Šluknov",
+  /** Zápis v rejstříku podle ARES (živnostenský rejstřík – aktivní, ověřeno 11. 11. 2026). */
+  register: "zapsána v živnostenském rejstříku",
 };
+
+/** Datum účinnosti stránky Pravidla používání webu. */
+export const TERMS_DATE = "11. 11. 2026";
 
 export const BRANDS = [
   "René D'essay",

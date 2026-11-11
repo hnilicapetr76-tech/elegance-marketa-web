@@ -29,8 +29,9 @@ export default function Gdpr() {
         <div className="wrap prose">
           <h2>Kdo se o vaše údaje stará</h2>
           <p>
-            Správcem osobních údajů je <b>{SITE.owner}</b>, IČ: {SITE.ico}, {SITE.street},{" "}
-            {SITE.zip} {SITE.city} — Centrum estetické krásy elegance Markéta.
+            Správcem osobních údajů je <b>{SITE.owner}</b>, IČ: {SITE.ico}, se sídlem {SITE.seat},{" "}
+            {SITE.register}. Provozovna: Centrum estetické krásy elegance Markéta, {SITE.street},{" "}
+            {SITE.zip} {SITE.city}.
           </p>
           <p>
             S čímkoliv ohledně svých údajů se na nás můžete obrátit na{" "}
@@ -135,7 +136,7 @@ export default function Gdpr() {
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a> — rády vám je jmenovitě sdělíme.
           </p>
 
-          <h2>Cookies a obsah z Facebooku a Map</h2>
+          <h2 id="cookies">Cookies a obsah z Facebooku a Map</h2>
           <p>
             Web sám o sobě žádné sledovací ani reklamní cookies nepoužívá. Zobrazujeme ale{" "}
             <b>příspěvky z našeho Facebooku</b> a <b>mapu s adresou od Googlu</b> — a tyto dvě

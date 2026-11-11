@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Souhlas s cookies třetích stran (Facebook, Mapy.cz).
+ * Souhlas s cookies třetích stran (Facebook, Mapy Google).
  *
  * Ukládá se do localStorage pod klíčem "em-consent":
  *   "all"       – návštěvník souhlasil s vloženým obsahem
@@ -100,16 +100,37 @@ export function ConsentReset() {
 
 export function CookieBar() {
   const { value, ready, accept, decline } = useConsent();
+  const barRef = useRef<HTMLDivElement>(null);
+  const visible = ready && value === null;
+
+  // Lišta je přilepená dole – dokud je vidět, necháme pod stránkou místo o její výšce,
+  // aby šlo doscrollovat k patičce (Ochrana osobních údajů, Pravidla používání webu)
+  // i na telefonu, kde lišta zabírá víc místa.
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!visible || !bar) return;
+    const body = document.body;
+    const set = () => {
+      body.style.paddingBottom = `${Math.ceil(bar.getBoundingClientRect().height)}px`;
+    };
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(bar);
+    return () => {
+      ro.disconnect();
+      body.style.paddingBottom = "";
+    };
+  }, [visible]);
 
   // Dokud nevíme, co je uloženo, nic nevykreslujeme — jinak by lišta
   // problikla i těm, kdo už dávno rozhodli.
-  if (!ready || value !== null) return null;
+  if (!visible) return null;
 
   return (
-    <div className="cbar" role="dialog" aria-label="Souhlas s cookies">
+    <div className="cbar" role="dialog" aria-label="Souhlas s cookies" ref={barRef}>
       <div className="cbar-in">
         <p>
-          Na webu zobrazujeme příspěvky z Facebooku a mapu z Mapy.cz. Tyto služby si do vašeho
+          Na webu zobrazujeme příspěvky z Facebooku a mapu z Map Google. Tyto služby si do vašeho
           prohlížeče ukládají vlastní cookies. Bez souhlasu je nenačteme a zbytek webu funguje
           normálně.{" "}
           <Link href="/ochrana-osobnich-udaju">Více o zpracování údajů</Link>
@@ -229,7 +250,7 @@ export function MapFrame({ src, title }: { src: string; title: string }) {
   if (value !== "all") {
     return (
       <Blocked
-        text="Zde se zobrazuje mapa s naší adresou. Načte se až po vašem souhlasu, protože Mapy.cz si ukládají vlastní cookies."
+        text="Zde se zobrazuje mapa s naší adresou. Načte se až po vašem souhlasu, protože Mapy Google si ukládají vlastní cookies."
         onAllow={accept}
       />
     );

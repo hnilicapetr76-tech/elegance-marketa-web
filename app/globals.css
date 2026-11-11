@@ -187,6 +187,9 @@ form .btn-gold{width:100%;font-family:inherit}
 .foot li{padding:5px 0}
 .foot a:hover{color:var(--gold-text)}
 .f-bot{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:14px}
+.f-legal{display:flex;flex-wrap:wrap;align-items:center;column-gap:0;row-gap:4px}
+.f-legal a{display:inline-flex;align-items:center;min-height:24px}
+.f-legal a+a::before{content:"\00b7";margin:0 10px;color:var(--muted)}
 
 .pros{list-style:none;margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
 .pros li{position:relative;padding:9px 0 9px 30px;font-size:15px;color:var(--ink-2)}
@@ -194,6 +197,7 @@ form .btn-gold{width:100%;font-family:inherit}
 
 .prose{max-width:780px;margin:0 auto}
 .prose h2{font-size:32px;margin:36px 0 14px}
+.prose h2[id]{scroll-margin-top:110px}
 .prose p,.prose li{color:var(--ink-2);font-size:15.5px;margin-bottom:12px}
 .prose ul{padding-left:22px;margin-bottom:16px}
 

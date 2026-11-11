@@ -137,7 +137,7 @@ export default function AskSection() {
           </div>
 
           <button className="btn btn-gold" type="submit" disabled={state.kind === "sending"}>
-            {state.kind === "sending" ? "Odesílám…" : "Odeslat poptávku"}
+            {state.kind === "sending" ? "Odesílám…" : "Odeslat nezávaznou poptávku"}
           </button>
           <p className="formnote">Ozveme se vám obvykle do jednoho pracovního dne.</p>
         </form>
