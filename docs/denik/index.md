@@ -8,6 +8,7 @@ Repo: `hnilicapetr76-tech/elegance-marketa-web` · Vercel projekt: `elegance-mar
 Rezervační systém (rezervace.elegancemarketa.cz) má vlastní repo `v0-salon-booking-app` a vlastní deník.
 
 ## Relace
+- [2026-11-12](relace/2026-11-12.md) – bezpečnostní kontrola a aktualizace knihoven (Next.js 16.4.6)
 - [2026-11-11](relace/2026-11-11.md) – Pravidla používání webu, provozovatel podle ARES, kontrola podle 8 pravidel webů
 
 ## Pravidla
