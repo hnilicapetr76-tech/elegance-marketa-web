@@ -22,12 +22,14 @@ const gluePrice = (pr: string) => pr.replace(/(\d) (?=\d)/g, `$1${NBSP}`).replac
 function keepQty(nm: string) {
   const i = nm.lastIndexOf(" — ");
   const tail = i < 0 ? "" : nm.slice(i + 3);
-  if (i < 0 || !/^\d/.test(tail)) return glueNum(nm.replace(/ — /g, `${NBSP}— `));
+  const m = tail.match(/^(\d[\d–]*\s\S+)(.*)$/);
+  if (i < 0 || !m) return glueNum(nm.replace(/ — /g, `${NBSP}— `));
   return (
     <>
       {glueNum(nm.slice(0, i))}
       {`${NBSP}— `}
-      <span className="qty">{glueNum(tail)}</span>
+      <span className="qty">{m[1]}</span>
+      {glueNum(m[2])}
     </>
   );
 }

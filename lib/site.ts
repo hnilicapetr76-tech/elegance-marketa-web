@@ -240,9 +240,9 @@ export const PRICES: PriceGroup[] = [
     group: "Dermální výplně Saypha",
     doctor: true,
     rows: [
-      ["Saypha filler — rty, kuřácké vrásky, ztráta objemu", "6 000 Kč", { todo: "Doplnit množství v ml" }],
-      ["Saypha volume — nosolabiální rýhy, lícní kosti", "6 500 Kč", { todo: "Doplnit množství v ml" }],
-      ["Saypha volume plus — kontury, brada, dolní čelist", "7 000 Kč", { todo: "Doplnit množství v ml" }],
+      ["Saypha filler — 1 ml (rty, kuřácké vrásky, ztráta objemu)", "6 000 Kč"],
+      ["Saypha volume — 1 ml (nosolabiální rýhy, lícní kosti)", "6 500 Kč"],
+      ["Saypha volume plus — 1 ml (kontury, brada, dolní čelist)", "7 000 Kč"],
     ],
   },
   {
@@ -324,7 +324,7 @@ export const PRICES: PriceGroup[] = [
       ["Pedikúra bez nehtové modeláže", "550 Kč"],
       ["Samotná nehtová modeláž na nohou", "500 Kč"],
       ["Parafín na nohy nebo ruce (studený i teplý)", "150 Kč"],
-      ["Příplatek dle náročnosti", "100 Kč", { todo: "Upřesnit: pevná cena, nebo „od 100 Kč“?" }],
+      ["Příplatek dle náročnosti", "+100 Kč"],
     ],
   },
   {
