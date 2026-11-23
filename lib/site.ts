@@ -93,7 +93,6 @@ export const SERVICES = [
       "Výplně Saypha filler, volume a volume plus",
       "Botulotoxin — čelo, glabela, okolí očí",
       "Botulotoxin proti nadměrnému pocení v podpaží",
-      "Niťový lifting — novinka",
     ],
   },
   {
@@ -163,6 +162,18 @@ export const SERVICES = [
     short:
       "Solárium ERGOLINE s výhodnějším tarifem za minutu při delších kreditech a široký výběr solární kosmetiky.",
     items: ["Kredity od 10 do 160 minut", "Solární kosmetika ERGOLINE"],
+  },
+  {
+    id: "nitovy-lifting",
+    n: "10",
+    badge: "Novinka",
+    title: "Niťový lifting",
+    short:
+      "Miniinvazivní zákrok se speciálními lékařskými vlákny, která pomáhají jemně nadzvednout a zpevnit povolenou tkáň. Provádí jej lékařka, vždy po konzultaci a posouzení zdravotního stavu.",
+    items: [
+      "Vlákna se zavádějí tenkou jehlou nebo kanylou",
+      "Výsledek i jeho trvání jsou individuální",
+    ],
   },
 ];
 

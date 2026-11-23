@@ -77,7 +77,10 @@ export default function Home() {
           <div className="grid">
             {SERVICES.map((s) => (
               <article className="card" key={s.id}>
-                <p className="ico">{s.n}</p>
+                <p className="ico">
+                  {s.n}
+                  {s.badge && <span className="price-badge">{s.badge}</span>}
+                </p>
                 <h3>{s.title}</h3>
                 <p>{s.short}</p>
               </article>

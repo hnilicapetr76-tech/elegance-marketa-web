@@ -29,7 +29,10 @@ export default function Sluzby() {
           <div className="grid">
             {SERVICES.map((s) => (
               <article className="card" key={s.id} id={s.id}>
-                <p className="ico">{s.n}</p>
+                <p className="ico">
+                  {s.n}
+                  {s.badge && <span className="price-badge">{s.badge}</span>}
+                </p>
                 <h2 style={{ fontSize: 26, margin: "12px 0 11px" }}>{s.title}</h2>
                 <p>{s.short}</p>
                 <ul>
