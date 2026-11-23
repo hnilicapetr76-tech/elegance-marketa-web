@@ -75,7 +75,7 @@ export const SERVICES = [
     n: "02",
     title: "Mezoterapie a revitalizace",
     short:
-      "Regenerace pleti mikrojehličkami i mikroinjekcemi. Do pokožky se dostane kyselina hyaluronová, vitaminy a peptidy, které stimulují tvorbu kolagenu.",
+      "Regenerace pleti mikrojehličkami i mikroinjekcemi. Do pokožky se dostane kyselina hyaluronová, vitaminy a peptidy, které stimulují tvorbu kolagenu. Mezoterapii mikrojehličkami provádíme v salonu, injekční aplikace Dermaheal HSR, ReviTrane a PhilArt provádí lékařka.",
     items: [
       "Mezoterapie mikrojehličkami",
       "Dermaheal HSR",
@@ -88,11 +88,12 @@ export const SERVICES = [
     n: "03",
     title: "Dermální výplně a botulotoxin",
     short:
-      "Injekční ošetření pro obnovení objemu, vyhlazení vrásek a modelaci kontur obličeje. Vždy po konzultaci a posouzení zdravotního stavu.",
+      "Injekční ošetření pro obnovení objemu, vyhlazení vrásek a modelaci kontur obličeje. Provádí je lékařka, vždy po konzultaci a posouzení zdravotního stavu.",
     items: [
       "Výplně Saypha filler, volume a volume plus",
       "Botulotoxin — čelo, glabela, okolí očí",
       "Botulotoxin proti nadměrnému pocení v podpaží",
+      "Niťový lifting — novinka",
     ],
   },
   {
@@ -100,7 +101,7 @@ export const SERVICES = [
     n: "04",
     title: "Lipolýza a elektrokoagulace",
     short:
-      "Neinvazivní odbourávání tukových buněk a rychlé odstranění drobných kožních nedokonalostí.",
+      "Cílené odbourávání lokálních tukových polštářků a rychlé odstranění drobných kožních nedokonalostí. Lipolýzu provádí lékařka, elektrokoagulaci kosmetický salon.",
     items: [
       "Lipolýza — podbradek, paže, břicho, stehna, boky",
       "Elektrokoagulace fibromů a kožních výrůstků",
@@ -166,13 +167,21 @@ export const SERVICES = [
 ];
 
 /**
- * Řádek ceníku: [název včetně množství, cena, interní poznámka].
- * Interní poznámka (3. položka) se zobrazí jen na náhledu (Vercel preview) a při vývoji,
- * na ostrém webu se nikdy neukáže – slouží k označení údajů, které je potřeba doplnit nebo potvrdit.
+ * Řádek ceníku: [název včetně množství, cena, doplňky].
+ * doplňky.todo – interní poznámka; zobrazí se jen na náhledu (Vercel preview) a při vývoji,
+ *   na ostrém webu se nikdy neukáže (údaje, které je potřeba doplnit nebo potvrdit).
+ * doplňky.doctor – výkon provádí lékařka (u řádku ve skupině, kde jinak pracuje salon).
+ * Skupina s doctor: true – celou kategorii provádí lékařka.
  * Jednotné psaní množství: „Název — množství“ (ml, jednotek, ks, ošetření, zákrok, minut, nehet).
  */
-export type PriceRow = [nm: string, pr: string, todo?: string];
-export type PriceGroup = { group: string; badge?: string; desc?: string; rows: PriceRow[] };
+export type PriceRow = [nm: string, pr: string, extra?: { todo?: string; doctor?: boolean }];
+export type PriceGroup = {
+  group: string;
+  badge?: string;
+  desc?: string;
+  doctor?: boolean;
+  rows: PriceRow[];
+};
 
 export const PRICES: PriceGroup[] = [
   {
@@ -203,6 +212,7 @@ export const PRICES: PriceGroup[] = [
   },
   {
     group: "Aplikační mezoterapie Dermaheal HSR",
+    doctor: true,
     rows: [
       ["Dermaheal HSR — 1 ml", "1 500 Kč"],
       ["Dermaheal HSR — 5 ml", "3 500 Kč"],
@@ -211,6 +221,7 @@ export const PRICES: PriceGroup[] = [
   },
   {
     group: "Skinbooster ReviTrane",
+    doctor: true,
     rows: [
       ["Obličej — 1 ošetření", "4 500 Kč"],
       ["Obličej a krk — 1 ošetření", "9 000 Kč"],
@@ -219,6 +230,7 @@ export const PRICES: PriceGroup[] = [
   },
   {
     group: "Biostimulační mezoterapie",
+    doctor: true,
     rows: [
       ["PhilArt Next — 2 ml", "7 000 Kč"],
       ["PhilArt Eye — 1 ml", "3 000 Kč"],
@@ -226,14 +238,16 @@ export const PRICES: PriceGroup[] = [
   },
   {
     group: "Dermální výplně Saypha",
+    doctor: true,
     rows: [
-      ["Saypha filler — rty, kuřácké vrásky, ztráta objemu", "6 000 Kč", "Doplnit množství v ml"],
-      ["Saypha volume — nosolabiální rýhy, lícní kosti", "6 500 Kč", "Doplnit množství v ml"],
-      ["Saypha volume plus — kontury, brada, dolní čelist", "7 000 Kč", "Doplnit množství v ml"],
+      ["Saypha filler — rty, kuřácké vrásky, ztráta objemu", "6 000 Kč", { todo: "Doplnit množství v ml" }],
+      ["Saypha volume — nosolabiální rýhy, lícní kosti", "6 500 Kč", { todo: "Doplnit množství v ml" }],
+      ["Saypha volume plus — kontury, brada, dolní čelist", "7 000 Kč", { todo: "Doplnit množství v ml" }],
     ],
   },
   {
     group: "Aplikace botulotoxinu",
+    doctor: true,
     rows: [
       ["Botulotoxin — 1 jednotka", "130 Kč"],
       ["Čelo — 13–20 jednotek", "1 690 – 2 600 Kč"],
@@ -245,16 +259,17 @@ export const PRICES: PriceGroup[] = [
   {
     group: "Niťový lifting",
     badge: "Novinka",
+    doctor: true,
     desc: "Miniinvazivní zákrok, při kterém se tenkou jehlou nebo kanylou zavádějí pod kůži speciální lékařská vlákna. Pomáhají jemně nadzvednout a zpevnit povolenou tkáň. Výsledek i jeho trvání jsou individuální — před zákrokem vždy probereme váš zdravotní stav, očekávání a vhodnost ošetření.",
     rows: [["Niťový lifting — 1 zákrok", "16 000 Kč"]],
   },
   {
     group: "Lipolýza a elektrokoagulace",
     rows: [
-      ["Lipolýza — 5 ml", "2 500 Kč"],
-      ["Elektrokoagulace — 1–5 ks", "500 Kč", "Překryv s 5–10 ks – návrh: 1–5 ks, čeká na potvrzení"],
-      ["Elektrokoagulace — 5–10 ks", "900 Kč", "Překryv u 5 ks – návrh: 6–10 ks, čeká na potvrzení"],
-      ["Elektrokoagulace — 10 ks a více", "dle konzultace", "Překryv u 10 ks – návrh: 11 ks a více, čeká na potvrzení"],
+      ["Lipolýza — 5 ml", "2 500 Kč", { doctor: true }],
+      ["Elektrokoagulace — 1–5 ks", "500 Kč", { todo: "Překryv s 5–10 ks – návrh: 1–5 ks, čeká na potvrzení" }],
+      ["Elektrokoagulace — 5–10 ks", "900 Kč", { todo: "Překryv u 5 ks – návrh: 6–10 ks, čeká na potvrzení" }],
+      ["Elektrokoagulace — 10 ks a více", "dle konzultace", { todo: "Překryv u 10 ks – návrh: 11 ks a více, čeká na potvrzení" }],
     ],
   },
   {
@@ -309,7 +324,7 @@ export const PRICES: PriceGroup[] = [
       ["Pedikúra bez nehtové modeláže", "550 Kč"],
       ["Samotná nehtová modeláž na nohou", "500 Kč"],
       ["Parafín na nohy nebo ruce (studený i teplý)", "150 Kč"],
-      ["Příplatek dle náročnosti", "100 Kč", "Upřesnit: pevná cena, nebo „od 100 Kč“?"],
+      ["Příplatek dle náročnosti", "100 Kč", { todo: "Upřesnit: pevná cena, nebo „od 100 Kč“?" }],
     ],
   },
   {
@@ -335,7 +350,7 @@ export const FAQ = [
   },
   {
     q: "Je potřeba konzultace před zákrokem?",
-    a: "U injekčních aplikací — výplní, botulotoxinu, mezoterapie — vždy probereme zdravotní stav i očekávaný výsledek, než začneme. U kosmetického ošetření, manikúry nebo solária to potřeba není.",
+    a: "Lékařské výkony — dermální výplně, botulotoxin, injekční mezoterapii, lipolýzu a niťový lifting — provádí lékařka a před každým z nich s vámi probere zdravotní stav i očekávaný výsledek. U kosmetického ošetření, manikúry nebo solária to potřeba není.",
   },
   {
     q: "Kolikrát musím na mezoterapii přijít?",

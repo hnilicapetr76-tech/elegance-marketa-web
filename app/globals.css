@@ -125,7 +125,12 @@ section{padding:92px 0}
 .price-row .pr{font-family:var(--font-cormorant),serif;font-size:22px;color:var(--gold-text);white-space:nowrap}
 .price-badge{display:inline-block;margin-left:12px;padding:3px 10px;border:1px solid var(--gold-text);color:var(--gold-text);font-family:var(--font-jost),sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;vertical-align:middle;border-radius:2px;transform:translateY(-3px)}
 .price-desc{color:var(--muted);font-size:14px;line-height:1.65;margin:4px 0 6px;max-width:640px}
+.price-row .pr{white-space:normal;text-align:right}
+.price-row .pr-rate{display:block;text-align:right;font-family:var(--font-jost),sans-serif;font-size:12px;color:var(--muted);letter-spacing:.02em;line-height:1.3}
 .price-row .qty{white-space:nowrap}
+.price-doc{display:block;white-space:nowrap;margin:2px 0 4px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);font-weight:400}
+.price-doc::before{content:"";display:inline-block;width:18px;height:1px;background:currentColor;vertical-align:middle;margin-right:8px;opacity:.7}
+.price-row .price-doc{margin:5px 0 0;font-size:10.5px;letter-spacing:.14em;white-space:normal}
 .price-todo{display:block;margin-top:4px;font-size:12px;color:#a2522f;letter-spacing:.02em}
 .price-todo::before{content:"⚑ ";}
 .note{text-align:center;color:var(--muted);font-size:13.5px;max-width:700px;margin:0 auto}
@@ -290,4 +295,13 @@ form .btn-gold{width:100%;font-family:inherit}
   .fb-tile{padding:22px 20px;gap:16px}
   .fb-tile img{width:60px;height:60px}
   .fb-tile-txt b{font-size:22px}
+}
+
+/* ---- Ceník na úzkých telefonech (≤ 380 px): menší mezera a písmo, ať se dlouhé názvy a ceny vejdou ---- */
+@media(max-width:380px){
+  .price-block{padding:12px 18px 18px}
+  .price-row{gap:10px}
+  .price-row .nm{font-size:14.5px}
+  .price-row .pr{font-size:20px}
+  .price-row .dots{min-width:10px}
 }

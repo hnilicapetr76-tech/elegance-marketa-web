@@ -38,9 +38,10 @@ export default function ONas() {
               které to vyžadují, máme odpovídající zázemí i odbornost.
             </p>
             <p>
-              Zaměřujeme se na problematiky pleti, omlazení, relax a odpočinek. Pracujeme výhradně
-              s ověřenými značkami kosmoceutik — René D&apos;essay, MEDIK8, Larimedical, Dermaheal
-              HSR, ReviTrane a Croma Saypha — a s prémiovým soláriem ERGOLINE.
+              Zaměřujeme se na péči o pleť, omlazení, relaxaci a odpočinek. V kosmetice pracujeme
+              s prémiovou profesionální kosmetikou René D&apos;essay, MEDIK8 a Larimedical,
+              v estetické medicíně s přípravky Dermaheal HSR, ReviTrane a Croma Saypha. K tomu
+              nabízíme prémiové solárium ERGOLINE.
             </p>
             <p>
               Ke každé klientce přistupujeme individuálně. Konzultace je vždy prvním krokem: projdeme
@@ -49,8 +50,10 @@ export default function ONas() {
             </p>
             <p>
               Na bezpečí si dáváme záležet. Nástroje sterilizujeme v medicínském autoklávu Enbio —
-              u piercingu, permanentního make-upu i pedikúry je to to první, na co se ptáme sami
-              sebe. Injekční zákroky, tedy dermální výplně a botulotoxin, provádí lékařka.
+              u piercingu, permanentního make-upu i pedikúry je sterilita samozřejmostí. Jasně
+              rozlišujeme, co je kosmetická péče a co lékařský výkon: dermální výplně, botulotoxin,
+              injekční mezoterapii, lipolýzu a niťový lifting provádí lékařka. Kosmetická ošetření,
+              permanentní make-up, piercing, masáže, nehty a pedikúru zajišťuje náš salon.
             </p>
             <p>
               A protože k péči patří i to, jak se u nás cítíte: na recepci je vždy připravená káva
@@ -60,7 +63,7 @@ export default function ONas() {
               <li>Injekční zákroky provádí lékařka</li>
               <li>Nástroje sterilizujeme v medicínském autoklávu Enbio</li>
               <li>Samostatná ošetřovna pro každou službu</li>
-              <li>Ověřené značky kosmoceutik</li>
+              <li>Prémiová profesionální kosmetika</li>
             </ul>
           </div>
         </div>

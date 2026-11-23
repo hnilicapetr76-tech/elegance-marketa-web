@@ -28,8 +28,8 @@ export default function Home() {
             <p className="lead-sub">Centrum estetické krásy</p>
             <p className="claim">Krása není luxus, ale péče, kterou si zasloužíte.</p>
             <p className="hero-text">
-              Nadstandardní kosmetické a estetické služby se špičkovými produkty, díky kterým si
-              nejen odpočinete, ale zároveň podtrhnete svou přirozenou krásu.
+              Nadstandardní kosmetické a estetické služby s prémiovou profesionální kosmetikou,
+              díky kterým si nejen odpočinete, ale zároveň podtrhnete svou přirozenou krásu.
             </p>
             <div className="cta-row">
               <Link className="btn btn-gold" href="/kontakt#zeptejte-se">
@@ -70,8 +70,8 @@ export default function Home() {
             <div className="gline c" />
             <h2>Naše služby</h2>
             <p>
-              Široká škála ošetření v oblasti péče o tělo — každé začíná nezávaznou konzultací, ať
-              víte, do čeho jdete.
+              Široká škála ošetření pro pleť i tělo — každé začíná nezávaznou konzultací, ať víte,
+              do čeho jdete.
             </p>
           </div>
           <div className="grid">
@@ -108,10 +108,11 @@ export default function Home() {
             <h2>Péče, které se dá věřit</h2>
             <p>
               Elegance Markéta je zdravotnické zařízení s lékařskými estetickými službami ve
-              Šluknově. Zaměřujeme se na problematiky pleti, omlazení, relax a odpočinek.
+              Šluknově. Zaměřujeme se na péči o pleť, omlazení, relaxaci a odpočinek.
             </p>
             <p>
-              Pracujeme výhradně s ověřenými značkami kosmoceutik a přístrojů. Ke každé klientce
+              Pracujeme s prémiovou profesionální kosmetikou a přístroji ověřených značek. Lékařské
+              estetické zákroky provádí lékařka. Ke každé klientce
               přistupujeme individuálně — konzultace je vždy prvním krokem. A na recepci na vás
               čeká káva, ať se u nás cítíte dobře od první minuty.
             </p>
@@ -119,7 +120,7 @@ export default function Home() {
               <li>Injekční zákroky provádí lékařka</li>
               <li>Nástroje sterilizujeme v medicínském autoklávu</li>
               <li>Samostatná ošetřovna pro každou službu</li>
-              <li>Ověřené značky kosmoceutik</li>
+              <li>Prémiová profesionální kosmetika</li>
             </ul>
           </div>
         </div>

@@ -13,9 +13,12 @@ export const metadata: Metadata = {
 const SHOW_TODO =
   process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 
-// Množství drží pohromadě i na úzkém displeji: „— 1 ml“, „— 60 minut“ se nerozdělí na dva řádky.
+// Množství drží pohromadě i na úzkém displeji: „1 ml“, „60 minut“ se nerozdělí; řádek se smí zlomit jen za pomlčkou.
 const NBSP = "\u00a0";
 const glueNum = (t: string) => t.replace(/(\d) (?=[^\d\s])/g, `$1${NBSP}`);
+// Cena se smí zalomit jen mezi slovy („dle konzultace“) nebo za pomlčkou rozsahu, nikdy uvnitř čísla.
+const gluePrice = (pr: string) => pr.replace(/(\d) (?=\d)/g, `$1${NBSP}`).replace(/ Kč/g, `${NBSP}Kč`);
+
 function keepQty(nm: string) {
   const i = nm.lastIndexOf(" — ");
   const tail = i < 0 ? "" : nm.slice(i + 3);
@@ -23,7 +26,8 @@ function keepQty(nm: string) {
   return (
     <>
       {glueNum(nm.slice(0, i))}
-      <span className="qty">{`${NBSP}— ${glueNum(tail)}`}</span>
+      {`${NBSP}— `}
+      <span className="qty">{glueNum(tail)}</span>
     </>
   );
 }
@@ -38,7 +42,8 @@ export default function Cenik() {
           <h1>Přehled cen</h1>
           <p>
             Kompletní ceník pro rok 2026. U rozsáhlejších ošetření vám konečnou cenu potvrdíme před
-            zákrokem, ať víte, s čím počítat.
+            zákrokem, ať víte, s čím počítat. Položky označené „Provádí lékařka“ jsou lékařské
+            výkony, ostatní ošetření provádí kosmetický salon.
           </p>
         </div>
       </section>
@@ -51,15 +56,26 @@ export default function Cenik() {
                 {g.group}
                 {g.badge && <span className="price-badge">{g.badge}</span>}
               </h3>
+              {g.doctor && <p className="price-doc">Provádí lékařka</p>}
               {g.desc && <p className="price-desc">{g.desc}</p>}
-              {g.rows.map(([nm, pr, todo]) => (
+              {g.rows.map(([nm, pr, extra]) => (
                 <div className="price-row" key={nm}>
                   <span className="nm">
                     {keepQty(nm)}
-                    {SHOW_TODO && todo && <span className="price-todo">{todo}</span>}
+                    {extra?.doctor && <span className="price-doc">Provádí lékařka</span>}
+                    {SHOW_TODO && extra?.todo && <span className="price-todo">{extra.todo}</span>}
                   </span>
                   <span className="dots" />
-                  <span className="pr">{pr}</span>
+                  <span className="pr">
+                    {pr.includes(" (") ? (
+                      <>
+                        {gluePrice(pr.slice(0, pr.indexOf(" (")))}
+                        <small className="pr-rate">{pr.slice(pr.indexOf(" (") + 1)}</small>
+                      </>
+                    ) : (
+                      gluePrice(pr)
+                    )}
+                  </span>
                 </div>
               ))}
             </div>

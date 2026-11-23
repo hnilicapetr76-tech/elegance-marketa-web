@@ -18,8 +18,8 @@ export default function Sluzby() {
           <div className="gline c" />
           <h1>Naše služby</h1>
           <p>
-            Široká škála ošetření v oblasti péče o tělo. Nevíte, co si vybrat? Napište nám a
-            poradíme — konzultace je nezávazná.
+            Široká škála ošetření pro pleť i tělo. Nevíte, co si vybrat? Napište nám a poradíme —
+            konzultace je nezávazná.
           </p>
         </div>
       </section>
