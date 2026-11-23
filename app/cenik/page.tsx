@@ -9,6 +9,25 @@ export const metadata: Metadata = {
   alternates: { canonical: "/cenik" },
 };
 
+// Interní poznámky u položek (k doplnění / k potvrzení) jen na náhledu a při vývoji – na ostrém webu nikdy.
+const SHOW_TODO =
+  process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
+
+// Množství drží pohromadě i na úzkém displeji: „— 1 ml“, „— 60 minut“ se nerozdělí na dva řádky.
+const NBSP = "\u00a0";
+const glueNum = (t: string) => t.replace(/(\d) (?=[^\d\s])/g, `$1${NBSP}`);
+function keepQty(nm: string) {
+  const i = nm.lastIndexOf(" — ");
+  const tail = i < 0 ? "" : nm.slice(i + 3);
+  if (i < 0 || !/^\d/.test(tail)) return glueNum(nm.replace(/ — /g, `${NBSP}— `));
+  return (
+    <>
+      {glueNum(nm.slice(0, i))}
+      <span className="qty">{`${NBSP}— ${glueNum(tail)}`}</span>
+    </>
+  );
+}
+
 export default function Cenik() {
   return (
     <>
@@ -28,10 +47,17 @@ export default function Cenik() {
         <div className="wrap">
           {PRICES.map((g) => (
             <div className="price-block" key={g.group}>
-              <h3>{g.group}</h3>
-              {g.rows.map(([nm, pr]) => (
+              <h3>
+                {g.group}
+                {g.badge && <span className="price-badge">{g.badge}</span>}
+              </h3>
+              {g.desc && <p className="price-desc">{g.desc}</p>}
+              {g.rows.map(([nm, pr, todo]) => (
                 <div className="price-row" key={nm}>
-                  <span className="nm">{nm}</span>
+                  <span className="nm">
+                    {keepQty(nm)}
+                    {SHOW_TODO && todo && <span className="price-todo">{todo}</span>}
+                  </span>
                   <span className="dots" />
                   <span className="pr">{pr}</span>
                 </div>

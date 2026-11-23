@@ -165,13 +165,22 @@ export const SERVICES = [
   },
 ];
 
-export const PRICES = [
+/**
+ * Řádek ceníku: [název včetně množství, cena, interní poznámka].
+ * Interní poznámka (3. položka) se zobrazí jen na náhledu (Vercel preview) a při vývoji,
+ * na ostrém webu se nikdy neukáže – slouží k označení údajů, které je potřeba doplnit nebo potvrdit.
+ * Jednotné psaní množství: „Název — množství“ (ml, jednotek, ks, ošetření, zákrok, minut, nehet).
+ */
+export type PriceRow = [nm: string, pr: string, todo?: string];
+export type PriceGroup = { group: string; badge?: string; desc?: string; rows: PriceRow[] };
+
+export const PRICES: PriceGroup[] = [
   {
     group: "Kosmetické ošetření pleti",
     rows: [
-      ["Ošetření René D'essay (60 min)", "1 400 Kč"],
-      ["Ošetření René D'essay (90 min)", "1 650 Kč"],
-      ["Úprava a depilace obočí", "100 Kč / ks"],
+      ["Ošetření René D'essay — 60 minut", "1 400 Kč"],
+      ["Ošetření René D'essay — 90 minut", "1 650 Kč"],
+      ["Úprava a depilace obočí", "100 Kč"],
       ["Depilace celého obličeje", "650 Kč"],
       ["Barvení řas", "150 Kč"],
       ["Barvení obočí", "150 Kč"],
@@ -184,62 +193,68 @@ export const PRICES = [
   {
     group: "Mezoterapie",
     rows: [
-      ["1 ošetření — obličej", "1 500 Kč"],
-      ["1 ošetření — obličej a krk", "2 000 Kč"],
-      ["1 ošetření — obličej, krk a dekolt", "2 500 Kč"],
-      ["4 ošetření — obličej", "5 000 Kč"],
-      ["4 ošetření — obličej a krk", "6 500 Kč"],
-      ["4 ošetření — obličej, krk a dekolt", "8 000 Kč"],
+      ["Obličej — 1 ošetření", "1 500 Kč"],
+      ["Obličej a krk — 1 ošetření", "2 000 Kč"],
+      ["Obličej, krk a dekolt — 1 ošetření", "2 500 Kč"],
+      ["Obličej — 4 ošetření", "5 000 Kč"],
+      ["Obličej a krk — 4 ošetření", "6 500 Kč"],
+      ["Obličej, krk a dekolt — 4 ošetření", "8 000 Kč"],
     ],
   },
   {
     group: "Aplikační mezoterapie Dermaheal HSR",
     rows: [
-      ["Dermaheal HSR 1 ml", "1 500 Kč"],
-      ["Dermaheal HSR 5 ml", "3 500 Kč"],
-      ["Balíček 3+1 zdarma (15 ml + 5 ml zdarma)", "10 500 Kč"],
+      ["Dermaheal HSR — 1 ml", "1 500 Kč"],
+      ["Dermaheal HSR — 5 ml", "3 500 Kč"],
+      ["Balíček 3+1 zdarma — celkem 20 ml (15 ml + 5 ml zdarma)", "10 500 Kč"],
     ],
   },
   {
     group: "Skinbooster ReviTrane",
     rows: [
-      ["1 ošetření — obličej", "4 500 Kč"],
-      ["1 ošetření — obličej a krk", "9 000 Kč"],
-      ["1 ošetření — obličej, krk a dekolt", "13 000 Kč"],
+      ["Obličej — 1 ošetření", "4 500 Kč"],
+      ["Obličej a krk — 1 ošetření", "9 000 Kč"],
+      ["Obličej, krk a dekolt — 1 ošetření", "13 000 Kč"],
     ],
   },
   {
     group: "Biostimulační mezoterapie",
     rows: [
-      ["PhilArt Next 2 ml", "7 000 Kč"],
-      ["PhilArt Eye 1 ml", "3 000 Kč"],
+      ["PhilArt Next — 2 ml", "7 000 Kč"],
+      ["PhilArt Eye — 1 ml", "3 000 Kč"],
     ],
   },
   {
     group: "Dermální výplně Saypha",
     rows: [
-      ["Saypha filler — rty, kuřácké vrásky, ztráta objemu", "6 000 Kč"],
-      ["Saypha volume — nosolabiální rýhy, lícní kosti", "6 500 Kč"],
-      ["Saypha volume plus — kontury, brada, dolní čelist", "7 000 Kč"],
+      ["Saypha filler — rty, kuřácké vrásky, ztráta objemu", "6 000 Kč", "Doplnit množství v ml"],
+      ["Saypha volume — nosolabiální rýhy, lícní kosti", "6 500 Kč", "Doplnit množství v ml"],
+      ["Saypha volume plus — kontury, brada, dolní čelist", "7 000 Kč", "Doplnit množství v ml"],
     ],
   },
   {
     group: "Aplikace botulotoxinu",
     rows: [
-      ["Cena za jednotku", "130 Kč"],
-      ["Čelo (13–20 jednotek)", "1 690 – 2 600 Kč"],
-      ["Glabela (13 jednotek)", "1 690 Kč"],
-      ["Okolí očí (15 jednotek)", "1 950 Kč"],
-      ["Podpaží — zábrana pocení (50 jednotek)", "6 500 Kč"],
+      ["Botulotoxin — 1 jednotka", "130 Kč"],
+      ["Čelo — 13–20 jednotek", "1 690 – 2 600 Kč"],
+      ["Glabela — 13 jednotek", "1 690 Kč"],
+      ["Okolí očí — 15 jednotek", "1 950 Kč"],
+      ["Podpaží, zábrana pocení — 50 jednotek", "6 500 Kč"],
     ],
+  },
+  {
+    group: "Niťový lifting",
+    badge: "Novinka",
+    desc: "Miniinvazivní zákrok, při kterém se tenkou jehlou nebo kanylou zavádějí pod kůži speciální lékařská vlákna. Pomáhají jemně nadzvednout a zpevnit povolenou tkáň. Výsledek i jeho trvání jsou individuální — před zákrokem vždy probereme váš zdravotní stav, očekávání a vhodnost ošetření.",
+    rows: [["Niťový lifting — 1 zákrok", "16 000 Kč"]],
   },
   {
     group: "Lipolýza a elektrokoagulace",
     rows: [
-      ["Lipolýza 5 ml", "2 500 Kč"],
-      ["Elektrokoagulace 1–5 ks", "500 Kč"],
-      ["Elektrokoagulace 5–10 ks", "900 Kč"],
-      ["Elektrokoagulace 10 ks a více", "dle konzultace"],
+      ["Lipolýza — 5 ml", "2 500 Kč"],
+      ["Elektrokoagulace — 1–5 ks", "500 Kč", "Překryv s 5–10 ks – návrh: 1–5 ks, čeká na potvrzení"],
+      ["Elektrokoagulace — 5–10 ks", "900 Kč", "Překryv u 5 ks – návrh: 6–10 ks, čeká na potvrzení"],
+      ["Elektrokoagulace — 10 ks a více", "dle konzultace", "Překryv u 10 ks – návrh: 11 ks a více, čeká na potvrzení"],
     ],
   },
   {
@@ -266,9 +281,9 @@ export const PRICES = [
   {
     group: "Masáže a čínská medicína",
     rows: [
-      ["Masáž 60 minut", "750 Kč"],
-      ["Masáž 90 minut", "1 100 Kč"],
-      ["Masáž 120 minut", "1 400 Kč"],
+      ["Masáž — 60 minut", "750 Kč"],
+      ["Masáž — 90 minut", "1 100 Kč"],
+      ["Masáž — 120 minut", "1 400 Kč"],
       ["Čínská diagnostika (kazuistika)", "1 200 Kč"],
       ["Akupunktura", "500 Kč"],
     ],
@@ -280,7 +295,7 @@ export const PRICES = [
       ["Doplnění modeláže S", "650 Kč"],
       ["Doplnění modeláže M", "700 Kč"],
       ["Doplnění modeláže L", "750 Kč"],
-      ["Oprava nehtu mimo termín", "150 Kč"],
+      ["Oprava nehtu mimo termín — 1 nehet", "150 Kč"],
       ["Odstranění modeláže", "350 Kč"],
       ["Pilník (výměna každých 6 měsíců)", "50 Kč"],
       ["Manikúra", "350 Kč"],
@@ -294,7 +309,7 @@ export const PRICES = [
       ["Pedikúra bez nehtové modeláže", "550 Kč"],
       ["Samotná nehtová modeláž na nohou", "500 Kč"],
       ["Parafín na nohy nebo ruce (studený i teplý)", "150 Kč"],
-      ["Příplatek dle náročnosti", "100 Kč"],
+      ["Příplatek dle náročnosti", "100 Kč", "Upřesnit: pevná cena, nebo „od 100 Kč“?"],
     ],
   },
   {

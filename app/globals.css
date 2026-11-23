@@ -123,6 +123,11 @@ section{padding:92px 0}
 .price-row .nm{font-size:15.5px}
 .price-row .dots{flex:1;border-bottom:1px dotted #d8c8b0;transform:translateY(-5px);min-width:20px}
 .price-row .pr{font-family:var(--font-cormorant),serif;font-size:22px;color:var(--gold-text);white-space:nowrap}
+.price-badge{display:inline-block;margin-left:12px;padding:3px 10px;border:1px solid var(--gold-text);color:var(--gold-text);font-family:var(--font-jost),sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;vertical-align:middle;border-radius:2px;transform:translateY(-3px)}
+.price-desc{color:var(--muted);font-size:14px;line-height:1.65;margin:4px 0 6px;max-width:640px}
+.price-row .qty{white-space:nowrap}
+.price-todo{display:block;margin-top:4px;font-size:12px;color:#a2522f;letter-spacing:.02em}
+.price-todo::before{content:"⚑ ";}
 .note{text-align:center;color:var(--muted);font-size:13.5px;max-width:700px;margin:0 auto}
 .warn{max-width:820px;margin:0 auto 30px;background:#fff8e8;border:1px solid var(--gold-soft);padding:18px 24px;font-size:14px;color:var(--ink-2);border-radius:4px}
 
