@@ -267,9 +267,9 @@ export const PRICES: PriceGroup[] = [
     group: "Lipolýza a elektrokoagulace",
     rows: [
       ["Lipolýza — 5 ml", "2 500 Kč", { doctor: true }],
-      ["Elektrokoagulace — 1–5 ks", "500 Kč", { todo: "Překryv s 5–10 ks – návrh: 1–5 ks, čeká na potvrzení" }],
-      ["Elektrokoagulace — 5–10 ks", "900 Kč", { todo: "Překryv u 5 ks – návrh: 6–10 ks, čeká na potvrzení" }],
-      ["Elektrokoagulace — 10 ks a více", "dle konzultace", { todo: "Překryv u 10 ks – návrh: 11 ks a více, čeká na potvrzení" }],
+      ["Elektrokoagulace — 1–5 ks", "500 Kč"],
+      ["Elektrokoagulace — 6–10 ks", "900 Kč"],
+      ["Elektrokoagulace — více než 10 ks", "dle náročnosti"],
     ],
   },
   {
